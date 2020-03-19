@@ -9,14 +9,16 @@
         "php": ">=7.2",
         "illuminate/support": "~5.3|^6.0",
         "illuminate/config": "~5.3|^6.0",
-        "sugatech/storage-sdk-laravel": "^20.0"
+        "illuminate/mail": "~5.3|^6.0",
+        "sugatech/storage-sdk-laravel": "^20.0",
+        "tzsk/sms": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Storage\\SDK\\": "src/"
+            "Mockup\\SDK\\": "src/"
         }
     }
 }
