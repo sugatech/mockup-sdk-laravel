@@ -3,10 +3,16 @@
 namespace Mockup\SDK\Sms;
 
 use Carbon\Carbon;
+use Storage\SDK\StorageClient;
 use Tzsk\Sms\Abstracts\Driver;
 
 class FileDriver extends Driver
 {
+    /**
+     * @var StorageClient
+     */
+    private $storageClient;
+
     /**
      * Your Driver Config.
      *
@@ -14,7 +20,7 @@ class FileDriver extends Driver
      */
     public function __construct($settings)
     {
-
+        $this->storageClient = new StorageClient($settings['api_url'], $settings['access_token']);
     }
 
     /**
@@ -34,7 +40,7 @@ class FileDriver extends Driver
             $tmp = tmpfile();
             fwrite($tmp, $this->body);
             $file = stream_get_meta_data($tmp)['uri'];
-            app('storage.client')->createFile($file, $path);
+            $this->storageClient->createFile($file, $path);
             fclose($tmp);
         }
 
