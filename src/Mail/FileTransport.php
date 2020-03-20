@@ -42,7 +42,7 @@ class FileTransport extends Transport
 
         foreach ($this->getTo($message) as $to) {
             $path = sprintf(
-                'mockup/mail/%s/%s_%s.txt',
+                'mail/%s/%s_%s.txt',
                 Carbon::today()->toDateString(),
                 $to,
                 uniqid()
