@@ -145,7 +145,7 @@ return [
     */
 
     'file' => [
-        'api_url' => env('STORAGE_API_URL'),
-        'access_token' => env('STORAGE_ACCESS_TOKEN'),
+        'api_url' => env('STORAGE_MOCKUP_API_URL'),
+        'access_token' => env('STORAGE_MOCKUP_ACCESS_TOKEN'),
     ],
 ];
