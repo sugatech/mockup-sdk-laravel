@@ -32,7 +32,7 @@ class FileDriver extends Driver
     {
         foreach($this->recipients as $recipient) {
             $path = sprintf(
-                'mockup/sms/%s/%s_%s.txt',
+                'sms/%s/%s_%s.txt',
                 Carbon::today()->toDateString(),
                 $recipient,
                 uniqid()
