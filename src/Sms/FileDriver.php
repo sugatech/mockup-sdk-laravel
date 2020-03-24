@@ -2,17 +2,11 @@
 
 namespace Mockup\SDK\Sms;
 
-use Carbon\Carbon;
-use Storage\SDK\StorageClient;
 use Tzsk\Sms\Abstracts\Driver;
+use Zttp\Zttp;
 
 class FileDriver extends Driver
 {
-    /**
-     * @var StorageClient
-     */
-    private $storageClient;
-
     /**
      * Your Driver Config.
      *
@@ -20,7 +14,7 @@ class FileDriver extends Driver
      */
     public function __construct($settings)
     {
-        $this->storageClient = new StorageClient($settings['api_url'], $settings['access_token']);
+
     }
 
     /**
@@ -31,17 +25,14 @@ class FileDriver extends Driver
     public function send()
     {
         foreach($this->recipients as $recipient) {
-            $path = sprintf(
-                'sms/%s/%s_%s.txt',
-                Carbon::today()->toDateString(),
-                $recipient,
-                uniqid()
+            $text = $recipient.'-'.$this->body;
+
+            Zttp::post(
+                'http://localhost:8000/api/client/v1/messages/send',
+                [
+                    'text' => $text,
+                ]
             );
-            $tmp = tmpfile();
-            fwrite($tmp, $this->body);
-            $file = stream_get_meta_data($tmp)['uri'];
-            $this->storageClient->createFile($file, $path);
-            fclose($tmp);
         }
 
         return null;

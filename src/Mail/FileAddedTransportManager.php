@@ -8,6 +8,6 @@ class FileAddedTransportManager extends TransportManager
 {
     protected function createFileDriver()
     {
-        return new FileTransport(config('mail.file'));
+        return new FileTransport();
     }
 }
