@@ -9,7 +9,7 @@ return [
     | You can switch to a different driver at runtime.
     |
     */
-    'default' => env('SMS_DRIVER', 'file'),
+    'default' => env('SMS_DRIVER', 'mockup'),
 
     /*
     |--------------------------------------------------------------------------
@@ -89,9 +89,8 @@ return [
         'smsdriver' => [
             'token' => 'token'
         ],
-        'file' => [
-            'api_url' => env('STORAGE_MOCKUP_API_URL'),
-            'access_token' => env('STORAGE_MOCKUP_ACCESS_TOKEN'),
+        'mockup' => [
+            'api_url' => env('MOCKUP_API_URL'),
         ],
     ],
 
@@ -119,6 +118,6 @@ return [
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
-        'file' => \Mockup\SDK\Sms\FileDriver::class,
+        'mockup' => \Mockup\SDK\Sms\MockupDriver::class,
     ]
 ];

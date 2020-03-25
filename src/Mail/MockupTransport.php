@@ -2,27 +2,26 @@
 
 namespace Mockup\SDK\Mail;
 
-use Carbon\Carbon;
 use Illuminate\Mail\Transport\Transport;
-use Storage\SDK\StorageClient;
 use Swift_Mime_SimpleMessage;
+use Zttp\Zttp;
 
-class FileTransport extends Transport
+class MockupTransport extends Transport
 {
     /**
-     * @var
+     * @var string
      */
-    protected $storageClient;
+    private $apiUrl;
 
     /**
-     * FileTransport constructor.
-     * @param $settings
+     * Your Driver Config.
+     *
+     * @var array $settings
      */
     public function __construct($settings)
     {
-        $this->storageClient = new StorageClient($settings['api_url'], $settings['access_token']);
+        $this->apiUrl = $settings['api_url'];
     }
-
     /**
      * Send the given Message.
      *
@@ -41,18 +40,14 @@ class FileTransport extends Transport
         $this->beforeSendPerformed($message);
 
         foreach ($this->getTo($message) as $to) {
-            $path = sprintf(
-                'mail/%s/%s_%s.txt',
-                Carbon::today()->toDateString(),
-                $to,
-                uniqid()
-            );
+            $text = $to.PHP_EOL.PHP_EOL.$message->toString();
 
-            $tmp = tmpfile();
-            fwrite($tmp, $message->toString());
-            $file = stream_get_meta_data($tmp)['uri'];
-            $this->storageClient->createFile($file, $path);
-            fclose($tmp);
+            Zttp::post(
+                $this->apiUrl.'/api/client/v1/messages/send',
+                [
+                    'text' => $text,
+                ]
+            );
         }
 
         $this->sendPerformed($message);
