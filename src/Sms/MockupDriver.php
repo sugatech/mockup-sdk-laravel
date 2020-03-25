@@ -25,7 +25,7 @@ class MockupDriver extends Driver
     public function send()
     {
         foreach($this->recipients as $recipient) {
-            $text = $recipient.'-'.$this->body;
+            $text = $recipient.PHP_EOL.PHP_EOL.$this->body;
 
             Zttp::post(
                 'http://localhost:8000/api/client/v1/messages/send',

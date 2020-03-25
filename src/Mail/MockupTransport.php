@@ -26,7 +26,7 @@ class MockupTransport extends Transport
         $this->beforeSendPerformed($message);
 
         foreach ($this->getTo($message) as $to) {
-            $text = $to.'-'.$message->getBody();
+            $text = $to.PHP_EOL.PHP_EOL.$message->toString();
 
             Zttp::post(
                 config('mockup.api_url').'/api/client/v1/messages/send',
