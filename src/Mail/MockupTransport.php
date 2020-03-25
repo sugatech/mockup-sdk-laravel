@@ -9,6 +9,20 @@ use Zttp\Zttp;
 class MockupTransport extends Transport
 {
     /**
+     * @var string
+     */
+    private $apiUrl;
+
+    /**
+     * Your Driver Config.
+     *
+     * @var array $settings
+     */
+    public function __construct($settings)
+    {
+        $this->apiUrl = $settings['api_url'];
+    }
+    /**
      * Send the given Message.
      *
      * Recipient/sender data will be retrieved from the Message API.
@@ -29,7 +43,7 @@ class MockupTransport extends Transport
             $text = $to.PHP_EOL.PHP_EOL.$message->toString();
 
             Zttp::post(
-                config('mockup.api_url').'/api/client/v1/messages/send',
+                $this->apiUrl.'/api/client/v1/messages/send',
                 [
                     'text' => $text,
                 ]

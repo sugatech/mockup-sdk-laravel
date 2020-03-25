@@ -8,13 +8,18 @@ use Zttp\Zttp;
 class MockupDriver extends Driver
 {
     /**
+     * @var string
+     */
+    private $apiUrl;
+
+    /**
      * Your Driver Config.
      *
      * @var array $settings
      */
     public function __construct($settings)
     {
-
+        $this->apiUrl = $settings['api_url'];
     }
 
     /**
@@ -28,7 +33,7 @@ class MockupDriver extends Driver
             $text = $recipient.PHP_EOL.PHP_EOL.$this->body;
 
             Zttp::post(
-                'http://localhost:8000/api/client/v1/messages/send',
+                $this->apiUrl.'/api/client/v1/messages/send',
                 [
                     'text' => $text,
                 ]

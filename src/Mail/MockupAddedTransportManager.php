@@ -8,6 +8,6 @@ class MockupAddedTransportManager extends TransportManager
 {
     protected function createMockupDriver()
     {
-        return new MockupTransport();
+        return new MockupTransport(config('mail.mockup'));
     }
 }

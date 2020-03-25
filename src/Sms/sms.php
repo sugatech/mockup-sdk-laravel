@@ -90,7 +90,7 @@ return [
             'token' => 'token'
         ],
         'mockup' => [
-            true
+            'api_url' => env('MOCKUP_API_URL'),
         ],
     ],
 
