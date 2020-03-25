@@ -5,7 +5,7 @@ namespace Mockup\SDK\Sms;
 use Tzsk\Sms\Abstracts\Driver;
 use Zttp\Zttp;
 
-class FileDriver extends Driver
+class MockupDriver extends Driver
 {
     /**
      * Your Driver Config.

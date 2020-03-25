@@ -12,11 +12,11 @@ return [
     | your application here. By default, Laravel is setup for SMTP mail.
     |
     | Supported: "smtp", "sendmail", "mailgun", "ses",
-    |            "postmark", "log", "array", "file"
+    |            "postmark", "log", "array", "mockup"
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'file'),
+    'driver' => env('MAIL_DRIVER', 'mockup'),
 
     /*
     |--------------------------------------------------------------------------
@@ -144,7 +144,7 @@ return [
     |
     */
 
-    'file' => [
+    'mockup' => [
 
     ],
 ];

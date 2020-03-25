@@ -6,7 +6,7 @@ use Illuminate\Mail\Transport\Transport;
 use Swift_Mime_SimpleMessage;
 use Zttp\Zttp;
 
-class FileTransport extends Transport
+class MockupTransport extends Transport
 {
     /**
      * Send the given Message.
