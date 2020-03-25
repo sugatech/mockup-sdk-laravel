@@ -22,7 +22,7 @@ class MailServiceProvider extends ServiceProvider
 
         $app->loadComponent(
             'mail',
-            FileAddedServiceProvider::class,
+            MockupAddedServiceProvider::class,
             'mailer'
         );
     }
