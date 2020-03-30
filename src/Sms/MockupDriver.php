@@ -7,6 +7,8 @@ use Zttp\Zttp;
 
 class MockupDriver extends Driver
 {
+    const channelKey = '[sms] ';
+
     /**
      * @var string
      */
@@ -30,7 +32,7 @@ class MockupDriver extends Driver
     public function send()
     {
         foreach($this->recipients as $recipient) {
-            $text = $recipient.PHP_EOL.PHP_EOL.$this->body;
+            $text = self::channelKey.$recipient.PHP_EOL.PHP_EOL.$this->body;
 
             Zttp::post(
                 $this->apiUrl.'/api/client/v1/messages/send',
