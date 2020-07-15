@@ -1,6 +1,6 @@
 {
     "name": "sugatech/mockup-sdk-laravel",
-    "version": "20.1.1",
+    "version": "20.1.2",
     "description": "Mockup Service SDK for Laravel and Lumen",
     "type": "library",
     "license": "MIT",
