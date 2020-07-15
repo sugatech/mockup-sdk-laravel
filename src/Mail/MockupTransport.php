@@ -42,7 +42,7 @@ class MockupTransport extends Transport
         $this->beforeSendPerformed($message);
 
         foreach ($this->getTo($message) as $to) {
-            $text = '['.self::channelKey.'] '.$to.PHP_EOL.PHP_EOL.$message->toString();
+            $text = '['.self::channelKey.'] '.$to.PHP_EOL.PHP_EOL.$message->getHeaders().PHP_EOL.PHP_EOL.$message->getBody();
 
             Zttp::post(
                 $this->apiUrl.'/api/client/v1/messages/send',
