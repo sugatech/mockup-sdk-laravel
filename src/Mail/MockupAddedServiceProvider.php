@@ -6,10 +6,14 @@ use Illuminate\Mail\MailServiceProvider;
 
 class MockupAddedServiceProvider extends MailServiceProvider
 {
-    protected function registerSwiftTransport()
+    protected function registerIlluminateMailer()
     {
-        $this->app->singleton('swift.transport', function ($app) {
-            return new MockupAddedTransportManager($app);
+        $this->app->singleton('mail.manager', function ($app) {
+            return new MockupAddedMailManager($app);
+        });
+
+        $this->app->bind('mailer', function ($app) {
+            return $app->make('mail.manager')->mailer();
         });
     }
 }
