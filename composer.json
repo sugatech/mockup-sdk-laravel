@@ -1,15 +1,15 @@
 {
     "name": "sugatech/mockup-sdk-laravel",
-    "version": "20.2.0",
+    "version": "20.3.0",
     "description": "Mockup Service SDK for Laravel and Lumen",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.2",
-        "illuminate/support": "~5.3|^6.0|^7.0",
-        "illuminate/config": "~5.3|^6.0|^7.0",
-        "illuminate/mail": "~5.3|^6.0|^7.0",
+        "illuminate/support": "^7.0",
+        "illuminate/config": "^7.0",
+        "illuminate/mail": "^7.0",
         "tzsk/sms": "^4.0",
         "kitetail/zttp": "^0.6.0"
     },
