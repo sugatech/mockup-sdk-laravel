@@ -10,8 +10,8 @@
         "illuminate/support": "^7.0",
         "illuminate/config": "^7.0",
         "illuminate/mail": "^7.0",
-        "tzsk/sms": "^4.0",
-        "kitetail/zttp": "^0.6.0"
+        "illuminate/http": "^7.0",
+        "tzsk/sms": "^5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
