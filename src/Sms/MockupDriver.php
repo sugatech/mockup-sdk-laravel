@@ -3,7 +3,7 @@
 namespace Mockup\SDK\Sms;
 
 use Illuminate\Support\Facades\Http;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class MockupDriver extends Driver
 {
