@@ -2,8 +2,8 @@
 
 namespace Mockup\SDK\Sms;
 
-use Tzsk\Sms\Abstracts\Driver;
-use Zttp\Zttp;
+use Illuminate\Support\Facades\Http;
+use Tzsk\Sms\Contracts\Driver;
 
 class MockupDriver extends Driver
 {
@@ -34,7 +34,7 @@ class MockupDriver extends Driver
         foreach($this->recipients as $recipient) {
             $text = '['.self::channelKey.'] '.$recipient.PHP_EOL.PHP_EOL.$this->body;
 
-            Zttp::post(
+            Http::post(
                 $this->apiUrl.'/api/client/v1/messages/send',
                 [
                     'text' => $text,
