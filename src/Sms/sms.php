@@ -35,11 +35,6 @@ return [
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
         ],
-        'nexmo' => [ // Install: composer require nexmo/client
-            'key' => 'Your Nexmo API Key',
-            'secret' => 'Your Nexmo API Secret',
-            'from' => 'Your Nexmo From Number',
-        ],
         'twilio' => [ // Install: composer require twilio/sdk
             'sid' => 'Your SID',
             'token' => 'Your Token',
@@ -109,7 +104,6 @@ return [
     'map' => [
         'sns' => \Tzsk\Sms\Drivers\Sns::class,
         'textlocal' => \Tzsk\Sms\Drivers\Textlocal::class,
-        'nexmo' => \Tzsk\Sms\Drivers\Nexmo::class,
         'twilio' => \Tzsk\Sms\Drivers\Twilio::class,
         'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
         'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,

@@ -3,8 +3,8 @@
 namespace Mockup\SDK\Mail;
 
 use Illuminate\Mail\Transport\Transport;
+use Illuminate\Support\Facades\Http;
 use Swift_Mime_SimpleMessage;
-use Zttp\Zttp;
 
 class MockupTransport extends Transport
 {
@@ -44,7 +44,7 @@ class MockupTransport extends Transport
         foreach ($this->getTo($message) as $to) {
             $text = '['.self::channelKey.'] '.$to.PHP_EOL.PHP_EOL.$message->getHeaders().PHP_EOL.PHP_EOL.$message->getBody();
 
-            Zttp::post(
+            Http::post(
                 $this->apiUrl.'/api/client/v1/messages/send',
                 [
                     'text' => $text,
